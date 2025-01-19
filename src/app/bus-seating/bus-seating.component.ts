@@ -42,6 +42,11 @@ export class BusSeatingComponent implements OnInit {
     const storedSeats = localStorage.getItem(this.busId);
     if (storedSeats) {
       this.seats = JSON.parse(storedSeats);
+      this.seats.forEach((s) => {
+        if (s.status === 'selected') {
+          s.status = 'available';
+        }
+      });
     } else {
       this.seats = [
         { id: 'A1', status: 'available' },
@@ -149,5 +154,8 @@ export class BusSeatingComponent implements OnInit {
         this.toasterMessage = ''; // Hide toast message after 3 seconds
       }, 3000);
     }
+
+    localStorage.setItem(this.busId, JSON.stringify(this.seats));
+    console.log(localStorage.getItem(this.busId));
   }
 }
