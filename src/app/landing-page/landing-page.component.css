@@ -1,0 +1,64 @@
+/* Styling the container for the bus cards */
+.buses-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Space between the cards */
+    padding: 20px;
+  }
+  
+  /* Styling for each bus card */
+  .bus-card {
+    background-color: #f9f9f9; /* Soft gray background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: calc(33% - 20px); /* Wider card, responsive to fit in rows */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+  }
+  
+  /* Hover effect for the card */
+  .bus-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  }
+  
+  /* Title styling */
+  .bus-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3b5998; /* A calm blue color for the title */
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for each line of information */
+  .bus-info {
+    font-size: 16px;
+    line-height: 1.6; /* Spacing between lines */
+    color: #555; /* Dark gray for text */
+    margin-bottom: 8px; /* Gap between lines */
+  }
+  
+  /* Button styling */
+  .select-bus-btn {
+    background-color: #3b5998; /* Blue button color */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0; /* Full-width button padding */
+    width: 100%; /* Full width of the card */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Smooth color change */
+  }
+  
+  /* Button hover effect */
+  .select-bus-btn:hover {
+    background-color: #2d4373; /* Darker blue on hover */
+  }
+  

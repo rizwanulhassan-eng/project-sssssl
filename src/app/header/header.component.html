@@ -1,0 +1,11 @@
+<nav class="navbar">
+    <div class="container">
+        <a routerLink="/" class="logo">Bus Booking</a>
+      <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+      <ul class="nav-links" [class.show]="menuOpen">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/admin">Admin</a></li>
+      </ul>
+    </div>
+  </nav>
+  

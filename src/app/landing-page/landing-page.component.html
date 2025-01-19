@@ -1,0 +1,11 @@
+<div class="buses-container">
+    <div class="bus-card" *ngFor="let bus of buses">
+      <div class="bus-title">{{ bus.id }}</div>
+      <div class="bus-info">From: {{ bus.from }}</div>
+      <div class="bus-info">To: {{ bus.to }}</div>
+      <div class="bus-info">Departure: {{ bus.departure }}</div>
+      <div class="bus-info">Total Seats: {{ bus.seats }}</div>
+      <button class="select-bus-btn" (click)="viewSeats(bus.id)">Select Bus</button>
+    </div>
+  </div>
+  

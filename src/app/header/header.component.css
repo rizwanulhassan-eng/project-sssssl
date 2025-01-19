@@ -1,0 +1,89 @@
+/* General Styles */
+.navbar {
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    color: #3b5998; /* Update logo color */
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none; /* Remove underline from the link */
+    margin-right: 20px;
+  }
+  
+  .logo:hover {
+    color: #3b5998; /* Darker red on hover */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Increase spacing between nav links */
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color:  #3b5998;;
+    cursor: pointer; 
+  }
+  
+  /* Responsive Menu */
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .nav-links.show {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      border-radius: 4px;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  }
+  

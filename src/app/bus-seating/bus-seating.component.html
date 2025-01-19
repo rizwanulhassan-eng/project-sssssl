@@ -1,0 +1,130 @@
+<div class="bus-seating-container">
+    <div class="bus-seating">
+      <!-- Driver Seat -->
+      <div class="seat driver-seat">Driver</div>
+  
+      <!-- Seat Rows -->
+      <div class="passenger-seat">
+        <div *ngFor="let row of getSeatRows(); let rowIndex = index" class="seat-row">
+          <div
+            *ngFor="let seat of row"
+            class="seat"
+            [ngClass]="{
+              'booked-seat': seat.status === 'booked',
+              'selected-seat': seat.status === 'selected'
+            }"
+            (click)="selectSeat(seat)"
+            [title]="seat.id"
+          >
+            {{ seat.id }}
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-container" *ngIf="selectedSeat">
+        <h2 class="form-title">Seat Booking Form</h2>
+        <button class="close-btn" (click)="cancelBooking()">×</button>
+        <form #bookingForm="ngForm" (ngSubmit)="bookSeat($event)" novalidate>
+          <!-- Name -->
+          <div class="form-group">
+            <label for="name">
+              <i class="fa fa-user"></i> Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              [(ngModel)]="bookingData.name"
+              required
+              #name="ngModel"
+            />
+            <div *ngIf="name.invalid && name.touched" class="error">
+              Name is required.
+            </div>
+          </div>
+      
+          <!-- Bus Number (Read-only) -->
+          <div class="form-group">
+            <label for="busNo">
+              <i class="fa fa-bus"></i> Bus No.
+            </label>
+            <input
+              type="text"
+              id="busNo"
+              name="busNo"
+              [(ngModel)]="bookingData.busNo"
+              [readonly]="true"
+            />
+          </div>
+      
+          <!-- Seat Number (Dynamically set) -->
+          <div class="form-group">
+            <label for="seatNo">
+              <i class="fa fa-chair"></i> Seat No.
+            </label>
+            <input
+              type="text"
+              id="seatNo"
+              name="seatNo"
+              [(ngModel)]="bookingData.seatNo"
+              [readonly]="true"
+              [value]="selectedSeat?.id"
+            />
+          </div>
+      
+          <!-- Destination (Dropdown) -->
+          <div class="form-group">
+            <label for="destination">
+              <i class="fa fa-map-marker-alt"></i> Select Destination
+            </label>
+            <select
+              id="destination"
+              name="destination"
+              [(ngModel)]="bookingData.destination"
+              required
+              #destination="ngModel"
+            >
+              <option value="" disabled>Select destination</option>
+              <option *ngFor="let dest of destinations" [value]="dest">
+                {{ dest }}
+              </option>
+            </select>
+            <div *ngIf="destination.invalid && destination.touched" class="error">
+              Destination is required.
+            </div>
+          </div>
+      
+          <!-- Departure Time (Read-only) -->
+          <div class="form-group">
+            <label for="departure">
+              <i class="fa fa-clock"></i> Time
+            </label>
+            <input
+              type="text"
+              id="departure"
+              name="departure"
+              [(ngModel)]="bookingData.departure"
+              [readonly]="true"
+            />
+          </div>
+      
+          <!-- Buttons -->
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" (click)="cancelBooking()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="bookingForm.invalid">
+              <i class="fa fa-check"></i> Book Seat
+            </button>
+          </div>
+        </form>
+      </div>
+      
+      
+  
+    <!-- Toaster Message -->
+    <div class="toaster" *ngIf="toasterMessage">
+      {{ toasterMessage }}
+    </div>
+  </div>
+  
